@@ -1,0 +1,27 @@
+name: Verify Agent Identity
+
+on:
+  workflow_dispatch:
+    inputs:
+      agent_name:
+        description: "Agent Name"
+        required: true
+        default: "rokkw"
+      agent_description:
+        description: "Agent Description"
+        required: true
+        default: "AI Agent"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Print Agent Info
+        run: |
+          echo "Agent Name: ${{ github.event.inputs.agent_name }}"
+          echo "Description: ${{ github.event.inputs.agent_description }}"
+          echo "Agent verification successful!"
